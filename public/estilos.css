@@ -1,0 +1,331 @@
+/* ==========================================================
+   ReportaBarrio · estilos.css
+   Paleta inspirada en la señalización urbana:
+   amarillo de advertencia + azul pizarra.
+   Bloques: 1 Variables · 2 Base · 3 Header (flex) · 4 Contenido
+            5 Botones · 6 Formularios · 7 Tarjetas (grid)
+            8 Estadísticas · 9 Footer · 10 Media queries
+   ========================================================== */
+
+/* ---------- 1. VARIABLES (colores en dos formatos) ---------- */
+:root {
+  --amarillo: #F2B705;                 /* formato hexadecimal */
+  --pizarra: rgb(31, 58, 77);          /* formato rgb */
+  --fondo: hsl(210, 25%, 96%);         /* formato hsl */
+  --texto: #1c2a33;
+  --borde: rgb(207, 216, 222);
+  --radio: 8px;
+}
+
+/* ---------- 2. BASE (modelo de caja y selectores de elemento) ---------- */
+* {
+  box-sizing: border-box;              /* el padding y el borde no agrandan el elemento */
+}
+
+body {                                  /* selector de ELEMENTO */
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--texto);
+  background-color: var(--fondo);
+}
+
+h1, h2, h3 {
+  color: var(--pizarra);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.2rem; margin: 0 0 0.5rem; }
+h2 { font-size: 1.6rem; margin: 0 0 0.75rem; }
+h3 { font-size: 1.15rem; margin: 0 0 0.4rem; }
+
+a { color: var(--pizarra); }
+
+:focus-visible {
+  outline: 3px solid var(--amarillo);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. HEADER con FLEXBOX (logo a un lado, menú al otro) ---------- */
+#encabezado {                           /* selector de ID */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--pizarra);
+  border-bottom: 5px solid var(--amarillo);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#encabezado nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#encabezado nav a {
+  padding: 0.45rem 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: var(--radio);
+}
+
+#encabezado nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#encabezado nav a[aria-current="page"] {
+  background-color: var(--amarillo);
+  color: var(--pizarra);
+  font-weight: 700;
+}
+
+/* ---------- 4. CONTENIDO ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.hero {
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  background-color: var(--pizarra);
+  border-left: 10px solid var(--amarillo);
+  border-radius: var(--radio);
+}
+
+.hero h1 { color: #ffffff; font-size: 2.6rem; max-width: 20ch; }
+.hero .lead { max-width: 65ch; color: #e6edf1; }
+
+.seccion { margin-bottom: 2.5rem; }
+.seccion-estrecha { max-width: 640px; margin-left: auto; margin-right: auto; }
+
+.lead { font-size: 1.1rem; max-width: 70ch; }
+
+.aviso {
+  padding: 1rem 1.25rem;
+  background-color: #fff6d6;
+  border: 2px dashed var(--amarillo);
+  border-radius: var(--radio);
+}
+
+.mensaje-vacio {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px dashed var(--borde);
+  border-radius: var(--radio);
+}
+
+.lista-errores {
+  padding: 1rem 1rem 1rem 2rem;
+  background-color: #fdecea;
+  border-left: 6px solid rgb(192, 57, 43);
+  border-radius: var(--radio);
+}
+
+/* ---------- 5. BOTONES ---------- */
+.boton {
+  display: inline-block;
+  padding: 0.65rem 1.3rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--pizarra);
+  background-color: var(--amarillo);
+  border: 2px solid var(--amarillo);
+  border-radius: var(--radio);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton:hover { background-color: #ffcb2e; }
+
+.boton-secundario {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+.hero .boton-secundario { color: #ffffff; }
+.hero .boton-secundario:hover { background-color: rgba(255, 255, 255, 0.15); }
+.boton-secundario:hover { background-color: rgba(31, 58, 77, 0.08); }
+
+/* ---------- 6. FORMULARIOS ---------- */
+form {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+label {
+  display: block;
+  margin: 1rem 0 0.3rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  background-color: #ffffff;
+  border: 1px solid #8fa1ad;
+  border-radius: var(--radio);
+}
+
+fieldset {
+  margin: 1.25rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+legend { padding: 0 0.4rem; font-weight: 600; }
+
+label.opcion {
+  display: inline-block;
+  margin: 0.25rem 1.25rem 0.25rem 0;
+  font-weight: 400;
+}
+
+form .boton { margin-top: 1.5rem; }
+
+/* ---------- 7. TARJETAS con CSS GRID ---------- */
+.cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.cuadricula-2 {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.tarjeta {                              /* selector de CLASE */
+  padding: 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid var(--borde);
+  border-top: 5px solid var(--amarillo);
+  border-radius: var(--radio);
+}
+
+.tarjeta p { margin: 0.4rem 0; }
+.tarjeta-meta { font-size: 0.9rem; color: rgb(84, 105, 120); }
+.tarjeta-pie { margin-top: 0.8rem; font-size: 0.8rem; color: rgb(84, 105, 120); }
+.tarjeta-etiquetas { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+
+.etiqueta {
+  padding: 0.15rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background-color: #e8eef2;
+}
+
+.urgencia-alta { background-color: #fbd3cd; color: #8e1f12; }
+.urgencia-media { background-color: #ffe9a8; color: #6b4e00; }
+.urgencia-baja { background-color: #d6efdd; color: #1b5e33; }
+.estado-pendiente { background-color: #e8eef2; color: var(--pizarra); }
+.estado-en-proceso { background-color: #d4e6f7; color: #134a7c; }
+.estado-resuelto { background-color: #1b5e33; color: #ffffff; }
+
+/* Distribución de la página Reportes: filtros + listado */
+.distribucion {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.filtros {
+  padding: 1rem 1.25rem 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+
+.filtros form { padding: 0; border: none; }
+.filtros .boton { margin-top: 1rem; width: 100%; text-align: center; }
+.filtros .boton-secundario { margin-top: 0.5rem; }
+
+/* ---------- 8. ESTADÍSTICAS ---------- */
+.tabla-stats { width: 100%; border-collapse: collapse; }
+.tabla-stats th, .tabla-stats td { padding: 0.5rem 0.4rem; text-align: left; border-bottom: 1px solid var(--borde); }
+.tabla-stats tbody th { font-weight: 500; }
+.barra-celda { width: 35%; }
+.barra { height: 14px; min-width: 2px; background-color: var(--amarillo); border-radius: 4px; }
+.cifra { text-align: right; font-weight: 700; }
+
+/* ---------- 9. FOOTER ---------- */
+footer {
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background-color: var(--pizarra);
+}
+
+footer p { margin: 0; }
+
+/* ---------- 10. MEDIA QUERIES ---------- */
+
+/* Tablet (opcional): los filtros pasan arriba del listado */
+@media (max-width: 900px) {
+  .distribucion { grid-template-columns: 1fr; }
+}
+
+/* Móvil: cuadrícula de una columna y menú reorganizado en vertical */
+@media (max-width: 600px) {
+  #encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #encabezado nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #encabezado nav a {
+    padding: 0.7rem 0.9rem;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .cuadricula,
+  .cuadricula-2 {
+    grid-template-columns: 1fr;
+  }
+
+  h1, .hero h1 { font-size: 1.8rem; }
+  main { padding: 1rem; }
+}
+
+/* Escritorio: más aire y una cuadrícula de tres columnas fijas */
+@media (min-width: 1024px) {
+  main { padding: 2rem; }
+
+  .cuadricula {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cuadricula-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .distribucion .cuadricula {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

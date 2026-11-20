@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar · ReportaBarrio</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header id="encabezado">
+    <a class="logo" href="/">
+      <img src="/img/logo.svg" alt="" width="40" height="40">
+      <span>ReportaBarrio</span>
+    </a>
+    <nav aria-label="Menú principal">
+      <a href="/">Inicio</a>
+      <a href="/reportar.html" aria-current="page">Reportar</a>
+      <a href="/reportes">Reportes</a>
+      <a href="/estadisticas">Estadísticas</a>
+    </nav>
+  </header>
+  <main>
+    <section class="seccion seccion-estrecha">
+      <h1>Reportar un problema</h1>
+      <p class="lead">Describe lo que ocurre en tu barrio. Todos los campos son obligatorios.</p>
+
+      <form id="formulario-reporte" action="/reportes" method="POST">
+        <label for="titulo">Título del reporte</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ej: Alcantarilla tapada en la esquina" required>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" required>
+          <option value="">Selecciona una categoría</option>
+          <option value="vias">Vías y huecos</option>
+          <option value="alumbrado">Alumbrado público</option>
+          <option value="residuos">Residuos y basuras</option>
+          <option value="agua">Agua y alcantarillado</option>
+          <option value="espacio-publico">Espacio público y zonas verdes</option>
+          <option value="seguridad-vial">Seguridad vial</option>
+        </select>
+
+        <label for="barrio">Barrio</label>
+        <select id="barrio" name="barrio" required>
+          <option value="">Selecciona un barrio</option>
+          <option value="San Salvador">San Salvador</option>
+          <option value="Centro">Centro</option>
+          <option value="Norte">Norte</option>
+          <option value="Sur">Sur</option>
+          <option value="Oriente">Oriente</option>
+          <option value="Occidente">Occidente</option>
+        </select>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="5" placeholder="Cuenta qué pasa, desde cuándo y qué riesgo genera (mínimo 10 caracteres)" required></textarea>
+
+        <fieldset>
+          <legend>Urgencia</legend>
+          <label class="opcion"><input type="radio" name="urgencia" value="baja" required> Baja</label>
+          <label class="opcion"><input type="radio" name="urgencia" value="media"> Media</label>
+          <label class="opcion"><input type="radio" name="urgencia" value="alta"> Alta</label>
+        </fieldset>
+
+        <label for="contacto">Contacto (correo o teléfono)</label>
+        <input type="text" id="contacto" name="contacto" placeholder="correo@ejemplo.com o 3001234567" required>
+
+        <button type="submit" class="boton">Enviar reporte</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>ReportaBarrio · Proyecto de aula de Tecnologías Web · ODS 11: Ciudades y comunidades sostenibles</p>
+  </footer>
+</body>
+</html>
